@@ -293,8 +293,13 @@ p{
   background-color: #3a604d;
   padding: 3%;
   margin-top: 5%;
-  justify-self: center;
-  position: relative;
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin:auto;
+  inset:0px;
   display: none;
   grid-template-columns: 235px 235px 235px ;
   row-gap: 4%;
