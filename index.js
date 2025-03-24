@@ -560,7 +560,7 @@ function playerMove(){
         if(nextCard==-1){
             console.log(`Сброс`); 
             console.log(`Ход Игрока`); 
-            eventInfo.textContent=`Бита, ходи`;
+            eventInfo.textContent=`Бито, ходи`;
             discard();
             newTurn();
             setTimeout(()=>{isPlayerTurn=true},1000);
