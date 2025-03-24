@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fool</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Assets/Images/favicon.svg">
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Tiny5&family=Dela+Gothic+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container" style="display: none;" >
+
+        <div class="control">
+
+            <div class="box-button" id="backToMenu">
+                <button id="backToMenuFix" class="menuBtn gameBtn"><span>Меню</span></button>
+            </div>
+            <div class="box-button" id="optionsGame">
+                <button id="optionsGameFix" class="menuBtn gameBtn"><span>Настройки</span></button>
+            </div>
+            <div class="box-button" id="musicGame">
+                <button id="musicGameFix" class="menuBtn gameBtn music"><span>Музыка</span></button>
+            </div>
+            <div class="box-button" id="takeAll">
+                <button id="takeAllFix" class="menuBtn gameBtn"><span>Взять</span></button>
+            </div>
+            <div class="box-button" id="discard">
+                <button id="discardFix" class="menuBtn gameBtn"><span>Бита</span></button>
+            </div>
+            
+            <p id="eventInfo"></p>
+            
+        </div>
+    
+
+        <div class="main" onclick="playerTurn()"></div>
+    
+        <div class="info">
+            <p>У <span class="infoText"></span><br><span class="infoText"></span></p>
+            <span class="infoText" style="position: absolute; top: 19%; left:94%;"></span>
+            <img src="" width="8%" id="back" style="border-radius: 10px; position: absolute; top: 26%; left:89%;  transform: rotate(90deg);">
+            <img src="" width="8%" id="deck" style="border-radius: 10px; position: absolute; top: 25%; left:92%;  transform: rotate(180deg); ">
+        </div>
+
+        <div class="hand"></div>
+
+
+    </div>
+    
+    <div id="menu">
+        <div class="box-button">
+            <button id="start" class="menuBtn"><span>Играть</span></button>
+        </div>
+        <div class="box-button">
+            <button id="selectSkins" class="menuBtn"><span>Карты</span></button>
+        </div>
+        <div class="box-button">
+            <button id="selectSong" class="menuBtn music"><span>Музыка</span></button>
+        </div>
+        <div class="box-button">
+            <button id="options" class="menuBtn"><span>Настройки</span></button>
+        </div>
+        <div class="box-button" style="position: absolute; top:4%; right:2%;">
+          <button id="credits" class="menuBtn" style="width:100px; height: 33px; font-size:10px"><span>Credits</span></button>
+      </div>
+
+      <div id="creditsDisplay" >
+        <button id="exitCredits" class="exit-button">
+          <svg height="20px" viewBox="0 0 384 512">
+            <path
+              d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+            ></path>
+          </svg>
+        </button>
+
+        <ul>
+          <li>Music</li>
+          <li><a href="https://freesound.org/people/ShadyDave/sounds/325647/" target="_blank" title="ShadyDave freesound">ShadyDave - Expressions of mind</a></li>
+          <li><a href="https://freesound.org/people/pryght%20one/sounds/27130/" target="_blank" title="pryght one freesound">pryght one - Harp</a></li>
+          <li><a href="https://freesound.org/people/Sirkoto51/sounds/416632/" target="_blank" title="Sirotko51 freesound">Sirotko51 - Castle</a></li>
+        </ul>
+        <ul>
+          <li>Cards</li>
+          <li><a href="https://mreliptik.itch.io/" target="_blank" title="Victor MEUNIER itch.io">Victor MEUNIER - Standart</a></li>
+          <li><a href="https://opengameart.org/content/playing-cards-vector-png" target="_blank" title="Byron Knoll opengameart">Byron Knoll - Classic</a></li>
+          <li><a href="https://opengameart.org/content/playing-cards" target="_blank" title="Sharm opengameart">Sharm - Elegant</a></li>
+          <li><a href="https://opengameart.org/content/playing-cards-5" target="_blank" title="Aidan Walker opengameart">Aidan Walker - Art</a></li>
+          <li><a href="https://www.artstation.com/treyramm" target="_blank" title="Trey Ramm Artstation">Trey Ramm - Vintage</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="optionsMenu" style="display: none">
+
+      <button id="optionsExit" class="exit-button">
+            <svg height="20px" viewBox="0 0 384 512">
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              ></path>
+            </svg>
+          </button>
+
+          <label for="musicVolume">Громкость музыки</label>
+        <label class="slider">
+            <input id="musicVolume" type="range" class="level" max="10" >
+            <svg class="volume" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                <g>
+                    <path d="M18.36 19.36a1 1 0 0 1-.705-1.71C19.167 16.148 20 14.142 20 12s-.833-4.148-2.345-5.65a1 1 0 1 1 1.41-1.419C20.958 6.812 22 9.322 22 12s-1.042 5.188-2.935 7.069a.997.997 0 0 1-.705.291z" fill="currentColor" data-original="#000000"></path>
+                    <path d="M15.53 16.53a.999.999 0 0 1-.703-1.711C15.572 14.082 16 13.054 16 12s-.428-2.082-1.173-2.819a1 1 0 1 1 1.406-1.422A6 6 0 0 1 18 12a6 6 0 0 1-1.767 4.241.996.996 0 0 1-.703.289zM12 22a1 1 0 0 1-.707-.293L6.586 17H4c-1.103 0-2-.897-2-2V9c0-1.103.897-2 2-2h2.586l4.707-4.707A.998.998 0 0 1 13 3v18a1 1 0 0 1-1 1z" fill="currentColor" data-original="#000000"></path>
+                </g>
+            </svg>
+        </label>
+
+        <label for="soundsVolume">Громкость звуков</label>
+        <label class="slider">
+            <input id="soundsVolume" type="range" class="level" max="10" value="3">
+            <svg class="volume" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" x="0" y="0" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                <g>
+                    <path d="M18.36 19.36a1 1 0 0 1-.705-1.71C19.167 16.148 20 14.142 20 12s-.833-4.148-2.345-5.65a1 1 0 1 1 1.41-1.419C20.958 6.812 22 9.322 22 12s-1.042 5.188-2.935 7.069a.997.997 0 0 1-.705.291z" fill="currentColor" data-original="#000000"></path>
+                    <path d="M15.53 16.53a.999.999 0 0 1-.703-1.711C15.572 14.082 16 13.054 16 12s-.428-2.082-1.173-2.819a1 1 0 1 1 1.406-1.422A6 6 0 0 1 18 12a6 6 0 0 1-1.767 4.241.996.996 0 0 1-.703.289zM12 22a1 1 0 0 1-.707-.293L6.586 17H4c-1.103 0-2-.897-2-2V9c0-1.103.897-2 2-2h2.586l4.707-4.707A.998.998 0 0 1 13 3v18a1 1 0 0 1-1 1z" fill="currentColor" data-original="#000000"></path>
+                </g>
+            </svg>
+        </label> 
+    </div>
+
+    <div id="selectMenu">
+        <button class="exit-button" id="exitSelect">
+            <svg height="20px" viewBox="0 0 384 512">
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              ></path>
+            </svg>
+          </button>
+
+
+          <div class="radio-buttons">
+            <label class="radio-button">
+              <input type="radio" name="option" class="songs" value="song_1">
+              <div class="radio-circle"></div>
+              <span class="radio-label">Формы разума</span>
+            </label>
+            <label class="radio-button" title="Author: pryght one">
+              <input type="radio" name="option" class="songs" value="song_2">
+              <div class="radio-circle"></div>
+              <span class="radio-label">NASA тут ни при чем</span>
+            </label>
+            <label class="radio-button">
+              <input type="radio" name="option" class="songs" value="song_3">
+              <div class="radio-circle"></div>
+              <span class="radio-label">В этой игре нет вампиров</span>
+            </label>
+            <label class="radio-button">
+                <input type="radio" name="option" class="songs" value="song_4">
+                <div class="radio-circle"></div>
+                <span class="radio-label">Новая волна</span>
+            </label>
+            <label class="radio-button">
+                <input type="radio" name="option" class="songs" value="song_5">
+                <div class="radio-circle"></div>
+                <span class="radio-label">Дисторшен</span>
+            </label>
+            <label class="radio-button">
+                <input type="radio" name="option" class="songs" value="song_6">
+                <div class="radio-circle"></div>
+                <span class="radio-label">У тебя в голове война</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="card" style="display: none">
+          <div class="card-content">
+            <p class="card-heading">Вернуться в главное меню?</p>
+            <p class="card-description">Прогресс не сохранится</p>
+          </div>
+          <div class="card-button-wrapper">
+            <button class="card-button secondary exitMenu">Отмена</button>
+            <button class="card-button primary">Вернуться</button>
+          </div>
+          <button class="exit-button exitMenu">
+            <svg height="20px" viewBox="0 0 384 512">
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <div id="selectCardMenu">
+          <img src="Assets\Images\Cards\Cards_36_Standart\14C.png" class="CardsSelection" id="Standart">
+          <img src="Assets\Images\Cards\Cards_36_Classic\14T.png" class="CardsSelection" id="Classic">
+          <img src="Assets\Images\Cards\Cards_36_Elegant\14P.png" class="CardsSelection" id="Elegant">
+          <img src="Assets\Images\Cards\Cards_36_Art\14H.png" class="CardsSelection" id="Art">
+          <img src="Assets\Images\Cards\Cards_36_Old\14C.png" class="CardsSelection" id="Old">
+          <img src="Assets\Images\Cards\Cards_36_Standart\back.png" class="CardsSelection" id="backSelect">
+
+          <button class="exit-button" id="exitSelectCardMenu">
+            <svg height="25px" viewBox="0 0 384 512">
+              <path
+                d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+       
+        <div id="final">
+          <p id="result"></p>
+        </div>
+
+        <div id="mobile">
+          <p>Мобильная версия в разработке</p>
+        </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
