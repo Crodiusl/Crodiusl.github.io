@@ -900,12 +900,14 @@ function updateInfo(){
 
     function finalDisplay(text){
         isGameOver=true;
-        container.style.display=`none`;
-        document.getElementById(`final`).style.display=`block`;
-        document.getElementById(`result`).textContent=text;
         setTimeout(()=>{
-            location.reload();
-        },5000)
+            container.style.display=`none`;
+            document.getElementById(`final`).style.display=`block`;
+            document.getElementById(`result`).textContent=text;
+            setTimeout(()=>{
+                location.reload();
+            },4000)
+        },1000)
     }
 }
 
