@@ -612,7 +612,7 @@ p{
   display:none;
 }
 
-/*
+
 @media screen and (width<=950px){
   #menu{
     display:none
@@ -620,4 +620,4 @@ p{
   #mobile{
     display:block;
   }
-}*/ 
+}
